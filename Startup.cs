@@ -83,7 +83,9 @@ namespace RedAlign.Portal.Service
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            //app.UseCors();
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:3000/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
+            );
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
