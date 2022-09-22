@@ -43,5 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="RedAlign.Data" />
+    <None Remove="portal.db-wal" />
+    <None Remove="portal.db-shm" />
   </ItemGroup>
 </Project>

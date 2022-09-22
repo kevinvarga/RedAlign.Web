@@ -84,7 +84,7 @@ const muiTheme = createMuiTheme({
 
 function Portal() {
   const { isLoading, isAuthenticated, error } = useAuth0();
-  const sessionState = useSelector(state => state.session);
+  //const sessionState = useSelector(state => state.session);
 
   const renderMain = () => {
     if(error) {

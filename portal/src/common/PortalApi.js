@@ -9,9 +9,7 @@ export const REQUEST_METHOD = Object.freeze({
 });
 
 export default class PortalApi {
-    constructor() {
-    }
-
+    
     request(path, token, method = REQUEST_METHOD.GET, data = null) {
         return new Promise((resolve, reject) => {
             let requestConfig = {

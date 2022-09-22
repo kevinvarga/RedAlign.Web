@@ -8,9 +8,9 @@ import Spinner from '../../components/common/Spinner';
 import NoData from '../../components/common/NoData';
 
 function Measurements(props) {
-    const { measurementsUpdate } = props;
+    //const { measurementsUpdate } = props;
     const [loading, setLoading] = useState(true);
-    const sessionState = useSelector(state => state.session);
+    //const sessionState = useSelector(state => state.session);
     const { getAccessTokenSilently } = useAuth0();
     const [results, setResults] = useState([]);
 

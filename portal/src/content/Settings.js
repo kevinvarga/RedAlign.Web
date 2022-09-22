@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleLeft, faLandmark, faPlusCircle, faUsersCog } from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleLeft, faLandmark, faUsersCog } from '@fortawesome/free-solid-svg-icons';
 import { Link, Route, Switch } from 'react-router-dom';
 import { portalDrawerWidth } from '../common/general';
 import Companies from './views/settings/Companies';
