@@ -44,7 +44,7 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-
+  
   build_react:
     name: Build React
     runs-on: ubuntu-latest
@@ -55,12 +55,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
-
-     - name: npm install, build, and test
-        run: |
-            npm install
-            npm run build
-        working-directory: portal
+    
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build
+      working-directory: portal
 
   deploy:
     runs-on: windows-latest
