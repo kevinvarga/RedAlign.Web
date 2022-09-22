@@ -45,8 +45,10 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
-  build-react:
+  build:
+    - name: Build React
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ env.NODE_VERSION }}
