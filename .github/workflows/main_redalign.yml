@@ -45,8 +45,8 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
-  build:
-    - name: Build React
+  build_react:
+    name: Build React
     runs-on: ubuntu-latest
 
     steps:
