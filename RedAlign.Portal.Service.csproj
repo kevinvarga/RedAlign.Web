@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>RedAlign.Web</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'RedAlign.Web' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" NoWarn="NU1605" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.9" NoWarn="NU1605" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.29" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+    <PackageReference Include="Json.Net" Version="1.0.33" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.25.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="MongoDB.Bson" Version="2.17.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.17.1" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.17.1" />
+    <PackageReference Include="MongoDB.Libmongocrypt" Version="1.6.0" />
+    <PackageReference Include="RedAlign.Data" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="portal\src\content\" />
+    <Folder Include="portal\src\content\components\toolbar\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="RedAlign.Data" />
+  </ItemGroup>
+</Project>
