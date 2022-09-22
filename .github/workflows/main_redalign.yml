@@ -9,6 +9,11 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  solution_file: 'RedAlign.Portal.Service.sln'
+  nuget_feed_name: 'kevinvarga'
+  nuget_feed_source: 'https://pkgs.dev.azure.com/kevinvarga/_packaging/kevinvarga/nuget/v3/index.json'
+
 jobs:
   build:
     runs-on: windows-latest
@@ -22,11 +27,17 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
 
+      - name: Auth NuGet
+        run: dotnet nuget add source ${{ env.nuget_feed_source }} --name ${{ env.nuget_feed_name }} --username az --password ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
+      - name: Restore NuGet Packages
+        run: dotnet restore ${{ env.solution_file_path }}
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish RedAlign.Portal.Service.sln -c Debug  -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
