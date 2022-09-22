@@ -44,23 +44,6 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-  
-  build_react:
-    name: Build React
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-    
-    - name: npm install and build
-      run: |
-        npm install
-        npm run build
-      working-directory: portal
 
   deploy:
     runs-on: windows-latest
@@ -83,3 +66,31 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2392DCD8D9FF4A17990761C61E3EBDA7 }}
           package: .
+
+  build_react:
+      name: Build and deploy React
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
+        working-directory: portal
+
+  deploy_react:
+      runs-on: windows-latest
+      needs: build_react
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: 'redalign'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2392DCD8D9FF4A17990761C61E3EBDA7 }}
+          package: ./portal
