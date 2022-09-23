@@ -95,4 +95,4 @@ jobs:
           app-name: 'redalign'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2392DCD8D9FF4A17990761C61E3EBDA7 }}
-          package: portal/build
+          package: ./portal/build
