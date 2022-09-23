@@ -47,7 +47,7 @@ jobs:
 
   deploy:
     runs-on: windows-latest
-    needs: build
+    needs: [build, build_react]
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
@@ -83,10 +83,9 @@ jobs:
           npm install
           npm run build
         working-directory: portal
-
-      - name: 'Deploy to Azure WebApp'
-        uses: azure/webapps-deploy@v2
-        with: 
-          app-name: 'redalign'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2392DCD8D9FF4A17990761C61E3EBDA7 }}
-          package: ./portal/build
+      
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: .net-app
+          path: portal/build
