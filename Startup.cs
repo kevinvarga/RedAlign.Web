@@ -60,7 +60,7 @@ namespace RedAlign.Portal.Service
             services.AddControllers();
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "portal/build";
+                configuration.RootPath = ".";
             });
 
             services.AddSwaggerGen(c =>
@@ -80,8 +80,7 @@ namespace RedAlign.Portal.Service
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            
 
             if (env.IsDevelopment())
             {
@@ -100,6 +99,8 @@ namespace RedAlign.Portal.Service
                 endpoints.MapControllers();
             });
 
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
             app.UseSpa(spa =>
             {
                 if(env.IsDevelopment())
