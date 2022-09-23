@@ -29,7 +29,7 @@ export default function PortalToolbar(props) {
         <AppBar position="fixed" className={classes.appBar} >
             <Toolbar>
                 <div>
-                    <img src="https://localhost:5002/images/logo-reverse.png" className={classes.logo} />
+                    <img src="images/logo-reverse.png" className={classes.logo} />
                 </div>
                 <Typography variant="h6" className={classes.title} >
                     &middot; Portal
