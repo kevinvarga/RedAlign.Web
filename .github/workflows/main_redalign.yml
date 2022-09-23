@@ -84,11 +84,6 @@ jobs:
           npm run build
         working-directory: portal
 
-  deploy_react:
-    runs-on: windows-latest
-    needs: build_react
-    
-    steps:
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v2
         with: 
