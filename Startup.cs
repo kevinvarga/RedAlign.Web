@@ -84,6 +84,7 @@ namespace RedAlign.Portal.Service
             app.UseSpaStaticFiles();
 
             app.UseCors(
+                // TODO: either remove or move to a configuration file 
                 options => options.WithOrigins("http://localhost:3000/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
             );
             app.UseRouting();
@@ -97,10 +98,9 @@ namespace RedAlign.Portal.Service
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "portal";
-
                 if(env.IsDevelopment())
                 {
+                    spa.Options.SourcePath = "portal";
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
