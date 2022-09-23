@@ -9,6 +9,7 @@ function Users(props) {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
     const [accessDenied, setAccessDenied] = useState(true);
+    const userUri = process.env.REACT_APP_PORTAL_API_URI;
 
     useEffect(() => {
         async function loadUsers() {
@@ -20,7 +21,7 @@ function Users(props) {
                         scope: 'read:users',
                     });*/
                     console.log(`token: ${token}`);
-                    axios.get("https://localhost:5002/api/user",
+                    axios.get(`${userUri}/user`, //https://localhost:5002/api/user
                     {
                         headers: {'Authorization': `Bearer ${token}`}
                     })
