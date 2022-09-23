@@ -72,9 +72,9 @@ namespace RedAlign.Portal.Service
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
                 //app.UseSwagger();
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RedAlign.Web v1"));
             }
@@ -83,10 +83,14 @@ namespace RedAlign.Portal.Service
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseCors(
-                // TODO: either remove or move to a configuration file 
-                options => options.WithOrigins("http://localhost:3000/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
-            );
+            if (env.IsDevelopment())
+            {
+                app.UseCors(
+                    // TODO: either remove or move to a configuration file 
+                   options => options.WithOrigins("http://localhost:3000/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
+                );
+            }
+
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
